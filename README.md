@@ -1,31 +1,48 @@
 # Tutoring for STEM
 
-Angular version of the original existentialThinkerWebsite. The original services, recent topics, contact fields, navigation, and green layout are preserved. Original HTML/CSS/script source is retained in `legacy-static/` as reference; it is not loaded by the application.
+A tutoring landing page presenting STEM tutoring services, recent topics, and a contact form. The Angular site preserves the original green design and navigation.
+
+## What you can do
+
+- Read about one-on-one tutoring, group sessions, and online resources.
+- Browse recent topic examples.
+- Use the contact form with name, email, and message validation.
+
+## Preview
+
+![A tutoring landing page presenting STEM tutoring services, recent topics, and a contact form](docs/screenshots/desktop.png)
+
+Captured from the running application on September 30, 2026. Any sample records shown are demonstration or isolated test data, not data included with a fresh installation.
+
+<details>
+<summary>Mobile view</summary>
+
+![Mobile a tutoring landing page presenting stem tutoring services, recent topics, and a contact form](docs/screenshots/mobile.png)
+
+</details>
 
 ## Run locally
 
-Use Node 26.10.0 (or an Angular 22 supported Node release).
+Use the Node version in `.nvmrc` (currently 26.10.0) and npm. Run these commands from the repository root.
 
 ```sh
+nvm use  # if you manage Node with nvm
 npm ci
 npm start
 ```
 
-Open http://127.0.0.1:4200. Keep the terminal in the foreground; stop with Ctrl+C.
+Open [http://127.0.0.1:4200](http://127.0.0.1:4200). Keep the server in the foreground; stop it with **Ctrl+C**.
+
+## Current scope
+
+Contact email is disabled by default. To enable it, configure `src/email-config.ts` with your own EmailJS public key, service ID, and template ID; use the template variables `name`, `email`, and `message`. Never add private keys to frontend source. Without configuration or connectivity, the form retains the message and explains that delivery is unavailable. The former static source is in `legacy-static/`.
+
+## Development
 
 ```sh
 npm run build
 npm run typecheck
 npm test -- --browsers=ChromeHeadless
-npm audit
 ```
 
-## Contact email
-
-Email is disabled by default and unavailable offline. The form validates required name, email and message; it never claims an email was sent when no service is configured. Message fields are preserved on failure. For optional online email, configure `src/email-config.ts` with your own EmailJS **public** key, service ID and template ID and set enabled to true. Use template variables `name`, `email`, `message`. Never embed private keys. Real email delivery was not exercised during migration; tests mock the optional service and make no external calls.
-
-The original domain files `CNAME` and `surge.json` are retained; no deployment or DNS changes were performed. Production output is `dist/existential-thinker-website/browser`.
-
-## Compatibility
-
-Angular 22.2.0, Node 26.10.0, TypeScript 6.0.3, EmailJS browser SDK 4.4.1. TypeScript stays below 6.1 as required by Angular 22. Jasmine 6.3 / types 6 are held for Zone 0.16 test compatibility; newer Jasmine read-only globals conflict with Zone. Official references: [Angular versions](https://angular.dev/reference/versions), [EmailJS sendForm](https://www.emailjs.com/docs/sdk/send-form/).
+Browser tests require Chrome or Chromium; set `CHROME_BIN` if it is outside the standard installation path. Angular 22 currently requires TypeScript 6.0.x. The Jasmine 6 test dependencies are retained for compatibility with Zone.js.
