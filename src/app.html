@@ -1,0 +1,61 @@
+
+    <header>
+        <h1>Tutoring for STEM</h1>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Recent Topics</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="intro">
+        <h2>Welcome to the Best STEM Tutoring</h2>
+        <p>Unlock your potential in Science, Technology, Engineering, and Mathematics with our expert tutoring services.</p>
+    </section>
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service">
+            <h3>One-on-One Tutoring</h3>
+            <p>Personalized tutoring sessions to help you master STEM subjects.</p>
+        </div>
+        <div class="service">
+            <h3>Group Sessions</h3>
+            <p>Collaborative learning environments for groups of students.</p>
+        </div>
+        <div class="service">
+            <h3>Online Resources</h3>
+            <p>Access to exclusive online resources and video tutorials.</p>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Recent Topics Explained</h2>
+        <div class="project">
+            <h3>How to Solve Quadratic Equations</h3>
+            <p>Watch our detailed tutorial on solving quadratic equations step by step.</p>
+        </div>
+        <div class="project">
+            <h3>Basic Integrals</h3>
+            <p>Learn the basics of integral calculus with our easy-to-follow guide.</p>
+        </div>
+        <div class="project">
+            <h3>Derivatives 101</h3>
+            <p>Understand the fundamental concepts of derivatives in calculus.</p>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form" #contactForm (submit)="submit($event, contactForm)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" [disabled]="sending">{{ sending ? "Sending…" : "Send" }}</button>
+            <p role="status" aria-live="polite">{{ status }}</p>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Tutoring for STEM. All rights reserved.</p>
+    </footer>
