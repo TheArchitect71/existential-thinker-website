@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "http://existentialthinker.com/*",
+      "destination": "https://existentialthinker.com/:splat",
+      "type": 301
+    }
+  ]
+}
